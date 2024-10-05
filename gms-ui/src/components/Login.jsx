@@ -2,6 +2,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import styles from './Styles/Login.module.css'; // Importing CSS module
 
 const Login = () => {
   const { setAuthDetails } = useContext(AuthContext);
@@ -60,36 +61,36 @@ const Login = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <h2 className="text-center mb-4 text-white">Login</h2>
-      <form onSubmit={handleSubmit} className="border p-4 rounded shadow-sm bg-light">
-        <div className="form-group mb-3">
-          <label className="text-muted">Username:</label>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Login</h2>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Username:</label>
           <input
             type="text"
             name="username"
-            className="form-control"
+            className={styles.input}
             value={credentials.username}
             onChange={handleInputChange}
             required
           />
         </div>
-        <div className="form-group mb-3">
-          <label className="text-muted">Password:</label>
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Password:</label>
           <input
             type="password"
             name="password"
-            className="form-control"
+            className={styles.input}
             value={credentials.password}
             onChange={handleInputChange}
             required
           />
         </div>
-        <div className="form-group mb-3">
-          <label className="text-muted">Role:</label>
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Role:</label>
           <select
             name="role"
-            className="form-control"
+            className={styles.select}
             value={credentials.role}
             onChange={handleInputChange}
             required
@@ -99,10 +100,10 @@ const Login = () => {
             <option value="TECHNICIAN">TECHNICIAN</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-primary btn-block mb-3">Login</button>
-        <button type="button" className="btn btn-secondary btn-block" onClick={handleRegister}>Register</button>
+        <button type="submit" className={styles.submitButton}>Login</button>
+        <button type="button" className={styles.registerButton} onClick={handleRegister}>Register</button>
       </form>
-      {message && <div className="alert alert-danger mt-3">{message}</div>}
+      {message && <div className={styles.alert}>{message}</div>}
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext'; // Assuming you have an AuthContext
 import { useNavigate } from 'react-router-dom';
+import './Styles/TechnicianDashboard.module.css';
 
 const TechnicianDashboard = () => {
   const { authDetails } = useContext(AuthContext); // Access authDetails from context
@@ -41,16 +42,12 @@ const TechnicianDashboard = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:8080/grievance/update-grievance-status`, {
+      const response = await fetch(`http://localhost:8080/grievance/update-grievance-status?grievanceId=${grievanceId}&status=${selectedStatus}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Basic ${btoa(`${authDetails.username}:${authDetails.password}`)}`,
         },
-        body: JSON.stringify({
-          grievanceId,
-          status: selectedStatus,
-        }),
       });
 
       if (response.ok) {
@@ -72,22 +69,20 @@ const TechnicianDashboard = () => {
       setMessage('Please select a technician status.');
       return;
     }
-
+  
     try {
-      const response = await fetch(`http://localhost:8080/technician/update-status`, {
+      // Make sure to send the correct endpoint for technician status update
+      const response = await fetch(`http://localhost:8080/grievance/update-technician-status?technicianId=${technicianId}&status=${technicianStatus}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Basic ${btoa(`${authDetails.username}:${authDetails.password}`)}`,
         },
-        body: JSON.stringify({
-          technicianId, // Include the technician ID in the body
-          status: technicianStatus, // Include the status string
-        }),
       });
-
+  
       if (response.ok) {
         setMessage('Technician status updated successfully!');
+        setTechnicianStatus(''); // Reset the status after update
       } else {
         const errorData = await response.json();
         setMessage(`Error: ${errorData.message}`);
@@ -110,22 +105,21 @@ const TechnicianDashboard = () => {
 
   return (
     <div className="container mt-5">
-      <h2>Technician Dashboard</h2>
-      {message && <p className="alert alert-info">{message}</p>}
+      <h2 className="title">Technician Dashboard</h2>
+      {message && <p className="alert">{message}</p>}
 
       {!hasEnteredId ? (
-        <form onSubmit={handleTechnicianIdSubmit}>
-          <label htmlFor="technicianId">Enter Technician ID:</label>
+        <form onSubmit={handleTechnicianIdSubmit} className="form">
+          <label htmlFor="technicianId" className="label">Enter Technician ID:</label>
           <input
             type="text"
             id="technicianId"
             value={technicianId}
             onChange={(e) => setTechnicianId(e.target.value)}
+            className="input"
             required
           />
-          <button type="submit" className="btn btn-primary mt-2">
-            Submit
-          </button>
+          <button type="submit" className="submitButton">Submit</button>
         </form>
       ) : (
         <>
@@ -155,6 +149,7 @@ const TechnicianDashboard = () => {
                     onChange={(e) => {
                       setSelectedStatus(e.target.value); // Update selected status
                     }}
+                    className="select"
                     required
                   >
                     <option value="">Select Status</option>
@@ -163,7 +158,7 @@ const TechnicianDashboard = () => {
                     <option value="CLOSED">Closed</option>
                   </select>
                   <button 
-                    className="btn btn-primary ms-2" 
+                    className="submitButton ms-2" 
                     onClick={() => {
                       handleUpdateGrievanceStatus(grievance.grievanceId); // Update with grievance ID
                       setSelectedStatus(grievance.status); // Automatically select current status
@@ -182,13 +177,14 @@ const TechnicianDashboard = () => {
           <select
             value={technicianStatus}
             onChange={(e) => setTechnicianStatus(e.target.value)}
+            className="select"
             required
           >
             <option value="">Select Status</option>
-            <option value="AVAILABLE">Available</option>
-            <option value="UNAVAILABLE">Unavailable</option>
+            <option value="Available">Available</option>
+            <option value="Unavailable">Unavailable</option>
           </select>
-          <button className="btn btn-primary ms-2" onClick={handleTechnicianStatusUpdate}>
+          <button className="submitButton ms-2" onClick={handleTechnicianStatusUpdate}>
             Update Technician Status
           </button>
         </>

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext'; // Import AuthContext
+import './Styles/TechnicianRegistration.module.css';
 
 const TechnicianRegistration = () => {
     const { authDetails } = useContext(AuthContext); // Access authDetails from context

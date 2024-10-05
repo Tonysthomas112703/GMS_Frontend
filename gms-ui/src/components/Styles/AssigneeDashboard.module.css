@@ -1,0 +1,118 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full height */
+    background-color: #f0f2f5; /* Light background */
+    padding: 20px;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333; /* Dark text for title */
+    font-weight: bold;
+}
+
+.alert {
+    color: #d9534f; /* Red for error messages */
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.tableResponsive {
+    width: 100%;
+    overflow-x: auto; /* Allow horizontal scroll */
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse; /* Collapse borders */
+    background-color: #fff; /* White background for table */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for table */
+}
+
+.table th,
+.table td {
+    padding: 10px;
+    border: 1px solid #ddd; /* Light gray border */
+    text-align: left;
+}
+
+.table th {
+    background-color: #007bff; /* Blue background for headers */
+    color: white; /* White text for headers */
+}
+
+.table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Alternate row color */
+}
+
+.selectButton,
+.confirmButton,
+.toggleButton,
+.registerButton {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transition for button background */
+}
+
+.selectButton {
+    background-color: #007bff; /* Blue for select button */
+    color: white; /* White text */
+}
+
+.selectButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.confirmButton {
+    background-color: #28a745; /* Green for confirm button */
+    color: white; /* White text */
+}
+
+.confirmButton:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.toggleButton {
+    background-color: #6c757d; /* Gray for toggle button */
+    color: white; /* White text */
+    margin: 10px 0; /* Margin for separation */
+}
+
+.toggleButton:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+}
+
+.card {
+    background-color: #ffffff; /* White background for the card */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 100%;
+    max-width: 800px; /* Limit width */
+    margin: 20px 0; /* Margin for spacing */
+}
+
+.cardHeader {
+    background-color: #007bff; /* Blue background for card header */
+    color: white; /* White text */
+    padding: 10px;
+    border-radius: 8px 8px 0 0; /* Round top corners */
+}
+
+.cardBody {
+    padding: 15px;
+}
+
+.select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px;
+    margin-bottom: 10px; /* Space below select */
+}

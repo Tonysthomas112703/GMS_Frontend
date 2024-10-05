@@ -1,6 +1,8 @@
 // src/components/UserDashboard.jsx
 import React, { useEffect, useState, useContext } from 'react';
-import { AuthContext } from '../context/AuthContext'; // Import AuthContext
+import { AuthContext } from '../context/AuthContext'; 
+import './Styles/Userdashboard.css'
+
 
 const UserDashboard = () => {
   const { authDetails } = useContext(AuthContext); // Get auth details from context
@@ -58,7 +60,7 @@ const UserDashboard = () => {
         setMessage(`Error: ${errorData.message}`);
       }
     } catch (error) {
-      setMessage('An error occurred while fetching grievances.');
+      setMessage('No Grievnaces to display.');
     }
   };
 
@@ -70,16 +72,8 @@ const UserDashboard = () => {
     <div className="container mt-5">
       <h2 className="mb-4">User Dashboard</h2>
       <form onSubmit={handleSubmit} className="mb-4">
+        
         <div className="form-group">
-          <label>Description:</label>
-          <input
-            type="text"
-            name="description"
-            className="form-control"
-            value={formData.description}
-            onChange={handleInputChange}
-            required
-          />
         </div>
         <div className="form-group mt-3">
           <label>Type:</label>
@@ -91,6 +85,16 @@ const UserDashboard = () => {
             onChange={handleInputChange}
             required
           />
+          <label>Description:</label>
+          <input
+            type="text"
+            name="description"
+            className="form-control"
+            value={formData.description}
+            onChange={handleInputChange}
+            required
+          />
+        
         </div>
         <button type="submit" className="btn btn-primary mt-3">Create Grievance</button>
       </form>

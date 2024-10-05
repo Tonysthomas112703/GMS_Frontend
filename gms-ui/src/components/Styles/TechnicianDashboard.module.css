@@ -1,0 +1,123 @@
+/* Container */
+.container {
+    max-width: 900px; /* Increased max-width for more spacious layout */
+    margin: 50px auto; /* Centered with margin at the top */
+    padding: 30px; /* Added padding for spacing */
+    background-color: #ffffff; /* White background for contrast */
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow for elevation effect */
+  }
+  
+  /* Title */
+  .title {
+    font-size: 2.5rem; /* Larger font size for prominence */
+    margin-bottom: 20px;
+    text-align: center; /* Centered title */
+    color: #333; /* Darker color for text */
+  }
+  
+  /* Alert messages */
+  .alert {
+    background-color: #ffebee; /* Light red background */
+    color: #d32f2f; /* Dark red text */
+    padding: 10px; /* Padding for spacing */
+    border: 1px solid #d32f2f; /* Dark red border */
+    border-radius: 5px; /* Slightly rounded corners */
+    margin-bottom: 20px;
+  }
+  
+  /* Form Styles */
+  .form {
+    margin-bottom: 30px;
+  }
+  
+  .label {
+    display: block; /* Ensures the label takes full width */
+    margin-bottom: 5px;
+    font-weight: bold; /* Bold labels */
+    color: #555; /* Darker color for labels */
+  }
+  
+  /* Input and Select Styles */
+  .input,
+  .select {
+    width: 100%;
+    padding: 12px; /* Increased padding for comfort */
+    margin-bottom: 15px;
+    border: 2px solid #ced4da; /* Thicker border */
+    border-radius: 6px; /* Rounded input */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+    font-size: 1rem; /* Font size for better readability */
+  }
+  
+  .input:focus,
+  .select:focus {
+    border-color: #007bff; /* Highlight border on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Shadow effect on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+  /* Button Styles */
+  .submitButton {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* White text */
+    border: none;
+    padding: 12px 25px; /* Increased padding for buttons */
+    border-radius: 6px; /* Rounded button */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1rem; /* Font size */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+  }
+  
+  .submitButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+  }
+  
+  /* Grievance List */
+  ul {
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove padding */
+  }
+  
+  li {
+    padding: 20px; /* Increased padding for grievances */
+    border: 1px solid #e9ecef; /* Light border around grievances */
+    border-radius: 8px; /* More rounded edges for grievances */
+    margin-bottom: 15px; /* Space between grievances */
+    background-color: #f9f9f9; /* Light background for grievances */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  li:hover {
+    background-color: #f1f1f1; /* Change background on hover */
+  }
+  
+  /* Strong Text */
+  strong {
+    font-weight: bold; /* Bold text for labels */
+    color: #333; /* Darker color for text */
+  }
+  
+  /* Status Select */
+  .select {
+    margin-top: 10px; /* Add margin for spacing */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .container {
+      padding: 20px; /* Reduce padding on smaller screens */
+    }
+  
+    .title {
+      font-size: 2rem; /* Smaller font size for mobile */
+    }
+  
+    .input,
+    .select,
+    .submitButton {
+      font-size: 0.9rem; /* Smaller font size for inputs and buttons */
+    }
+  }
+  

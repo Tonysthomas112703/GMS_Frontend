@@ -1,5 +1,6 @@
 // src/components/RegisterUser.jsx
 import React, { useState } from "react";
+import './Styles/RegisterUser.module.css'
 
 const RegisterUser = () => {
   const [formData, setFormData] = useState({
@@ -81,6 +82,7 @@ const RegisterUser = () => {
             required
           >
             <option value="USER">User</option>
+            
     
           </select>
         </div>

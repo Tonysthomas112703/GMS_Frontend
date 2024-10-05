@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import styles from './Styles/AssigneeDashboard.module.css'; // Import your custom CSS module
 
 const AssigneeDashboard = () => {
   const { authDetails } = useContext(AuthContext);
@@ -89,16 +90,17 @@ const AssigneeDashboard = () => {
   }, []);
 
   return (
-    <div className="container mt-5">
-      <h2 className="mb-4">Assignee Dashboard</h2>
-      {message && <p className="alert alert-info">{message}</p>}
+    <div className={styles.container}>
+      <h2 className={styles.title}>Assignee Dashboard</h2>
+      {message && <p className={styles.alert}>{message}</p>}
 
       <h3>Unassigned Grievances</h3>
-      <div className="table-responsive mb-4">
-        <table className="table table-bordered table-striped">
+      <div className={styles.tableResponsive}>
+        <table className={styles.table}>
           <thead>
             <tr>
               <th>Grievance ID</th>
+              <th>Username</th>
               <th>Description</th>
               <th>Type</th>
               <th>Status</th>
@@ -110,12 +112,13 @@ const AssigneeDashboard = () => {
               unassignedGrievances.map((grievance) => (
                 <tr key={grievance.grievanceId}>
                   <td>{grievance.grievanceId}</td>
+                  <td>{grievance.username}</td>
                   <td>{grievance.description}</td>
                   <td>{grievance.type}</td>
                   <td>{grievance.status}</td>
                   <td>
                     <button
-                      className="btn btn-primary"
+                      className={styles.selectButton}
                       onClick={() => {
                         setSelectedGrievanceId(grievance.grievanceId);
                         setSelectedTechnician('');
@@ -128,7 +131,7 @@ const AssigneeDashboard = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="5">No unassigned grievances available.</td>
+                <td colSpan="6">No unassigned grievances available.</td>
               </tr>
             )}
           </tbody>
@@ -137,7 +140,7 @@ const AssigneeDashboard = () => {
 
       {/* Technician Selection */}
       {selectedGrievanceId && (
-        <div className="mb-4">
+        <div className={styles.technicianSelection}>
           <h4>Assign Technician for Grievance ID: {selectedGrievanceId}</h4>
           <select
             value={selectedTechnician}
@@ -147,7 +150,7 @@ const AssigneeDashboard = () => {
               setSelectedTechnician(selectedTechId);
               setSelectedTechnicianName(selectedTech ? selectedTech.username : '');
             }}
-            className="form-select me-2"
+            className={styles.select}
             required
           >
             <option value="">Select Technician</option>
@@ -157,7 +160,7 @@ const AssigneeDashboard = () => {
               </option>
             ))}
           </select>
-          <button className="btn btn-success" onClick={handleAssignTechnician}>
+          <button className={styles.confirmButton} onClick={handleAssignTechnician}>
             Confirm Assignment
           </button>
         </div>
@@ -165,7 +168,7 @@ const AssigneeDashboard = () => {
 
       {/* Button to toggle technician view */}
       <button
-        className="btn btn-info mb-3"
+        className={styles.toggleButton}
         onClick={() => setShowTechnicians(!showTechnicians)}
       >
         {showTechnicians ? 'Hide Technicians' : 'Show Technicians'}
@@ -173,12 +176,12 @@ const AssigneeDashboard = () => {
 
       {/* Conditional rendering of technician list */}
       {showTechnicians && (
-        <div className="card">
-          <div className="card-header">
+        <div className={styles.card}>
+          <div className={styles.cardHeader}>
             <h4>All Technicians</h4>
           </div>
-          <div className="card-body">
-            <table className="table table-striped">
+          <div className={styles.cardBody}>
+            <table className={styles.table}>
               <thead>
                 <tr>
                   <th>ID</th>
@@ -204,7 +207,7 @@ const AssigneeDashboard = () => {
 
       {/* Button for Technician Registration */}
       <button
-        className="btn btn-warning mb-3"
+        className={styles.registerButton}
         onClick={() => navigate('/register-technician')}
       >
         Register Technician
